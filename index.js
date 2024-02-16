@@ -1,4 +1,4 @@
-import express from "express";
+import express, { request, response } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import "dotenv/config";
@@ -13,6 +13,10 @@ const app = express();
 app.use(express.json());
 
 app.use(cors());
+
+app.get("/", (request, response) => {
+  response.send("Сервер готов");
+});
 
 app.use("/workWear", workWearRoutes);
 app.use("/shoes", shoesRoutes);
